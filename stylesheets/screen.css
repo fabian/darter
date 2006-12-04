@@ -1,0 +1,59 @@
+body {
+	background-color: #222;
+	margin: 0;
+	font-size: 101%;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+}
+
+#title {
+	padding: 1.5em;
+	padding-bottom: 0;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.5em 0.75em 0.6em;
+}
+
+.page {
+	width: 50em;
+	background-color: white;
+	border-right: 0.4em solid #F1C80D;
+}
+
+.section {
+	padding: 1em 0.5em;
+	margin: 0 1em;
+	width: 45em;
+	float: left;
+	border: solid #CCC;
+	border-width: 1px 0 0;
+}
+
+.section .label {
+	width: 10em;
+	float: left;
+}
+
+.section .content {
+	width: 30em;
+	float: right;
+}
+
+dt {
+	font-weight: bold;	
+}
+
+dd {
+	margin: 0.2em 1em;
+}
+
+hr {
+	clear: both;
+}
+
