@@ -1,22 +1,32 @@
-<?php
+<pre><?php
 require_once 'inspection.package.php';
 
 /**
  * Some stupid comments about this class
  * and its usage.
  *
- * @Resource(foobar, asd=df, asdsdasd=asdsd)
+ * @author Fabian Vogler
  */
 class TestClass {
 	
+	/**
+	 * This cool method return foo bar. Or
+	 * at least something similar.
+	 *
+	 * @param string $world
+	 * @param string $name
+	 * @return string
+	 */
+	public function helloWorld($world, $name) {
+		return 'Hello ' . $world . ' to ' . $name . '!';
+	}
 }
 
-class Resource extends Annotation {	
-	public $value = 'foo';
-}
+$inspection = new DarterInspectionClass('TestClass');
+var_dump($inspection->getAnnotations('author'));
 
-$inspection = new InspectionClass('TestClass');
-var_dump($inspection->isAnnotationPresent('Resource'));
-var_dump($inspection->getAnnotation('Resource')->value);
+$inspection = new DarterInspectionMethod('TestClass', 'helloWorld');
+var_dump($inspection->getAnnotations('param'));
+var_dump($inspection->getAnnotations('return'));
 
-?>
+?></pre>
