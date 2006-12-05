@@ -16,8 +16,10 @@ body {
 }
 
 h1 {
-	font-size: 2em;
-	margin: 0.5em 0.75em 0.6em;
+	font-size: 2.5em;
+	margin: 0.5em 0.5em 0.6em;
+	font-family: Georgia, Garamond, serif;
+	letter-spacing: 0.05em;
 }
 
 .page {
@@ -29,10 +31,15 @@ h1 {
 .section {
 	padding: 1em 0.5em;
 	margin: 0 1em;
-	width: 45em;
 	float: left;
 	border: solid #CCC;
 	border-width: 1px 0 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 0.9em;
+}
+
+.section.odd {
+	background-color: #F0F0F0;
 }
 
 .section .label {
@@ -41,8 +48,17 @@ h1 {
 }
 
 .section .content {
-	width: 30em;
+	width: 40em;
 	float: right;
+}
+
+h3 {
+	margin: 1.4em 0 0.4em;	
+}
+
+p {
+	margin: 0 0 0.4em;
+	line-height: 1.4em;
 }
 
 dt {
@@ -53,7 +69,45 @@ dd {
 	margin: 0.2em 1em;
 }
 
+ul {
+	margin-left: 0.5em;
+	list-style-type: square;
+}
+
+li {
+	margin-left: 1em;
+}
+
 hr {
 	clear: both;
+}
+
+.menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style: none;
+	width: 48em;
+}
+
+.menu li {
+	float: right;
+}
+
+.menu li a {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 0.8em;
+	display: block;
+	padding: 0.6em 1em;
+	color: black;
+	background-color: #E1E1E1;
+	text-decoration: none;
+}
+
+.menu li a:hover {
+	padding-top: 0.9em;
+	background-color: #0c92f2;
+	color: white;
+	text-decoration: none;
 }
 
