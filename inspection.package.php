@@ -1,6 +1,10 @@
 <?php
 
-class DarterInspection {
+class Darter_AuthorTag {
+	
+}
+
+class Darter_Inspection {
 	public static function parseAnnotations($comment) {
 		$annotations = array();
 		
@@ -17,29 +21,37 @@ class DarterInspection {
 	}
 }
 
-class DarterInspectionClass extends ReflectionClass {
+class Darter_InspectionClass extends ReflectionClass {
 	
 	private $annotations;
 	
 	public function __construct($class) {
 		parent::__construct($class);
 		
-		$this->annotations = DarterInspection::parseAnnotations($this->getDocComment());
+		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
 	
 	public function getAnnotations($annotation) {
 		return $this->annotations[$annotation];
 	}
+	
+	public function getMethods() {
+		$methods = array();
+		foreach(parent::getMethods() as $method) {
+			$methods[] = new Darter_InspectionMethod($this->getName(), $method->getName());
+		}
+		return $methods;
+	}
 }
 
-class DarterInspectionMethod extends ReflectionMethod {
+class Darter_InspectionMethod extends ReflectionMethod {
 	
 	private $annotations;
 	
 	public function __construct($class, $name) {
 		parent::__construct($class, $name);
 		
-		$this->annotations = DarterInspection::parseAnnotations($this->getDocComment());
+		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
 	
 	public function getAnnotations($annotation) {
