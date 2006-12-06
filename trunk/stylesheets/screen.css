@@ -1,7 +1,5 @@
 body {
 	background-color: #222;
-	margin: 0;
-	font-size: 101%;
 }
 
 * {
@@ -10,9 +8,11 @@ body {
 	font-size: 1em;
 }
 
-#title {
+.title {
 	padding: 1.5em;
 	padding-bottom: 0;
+	font-family: Verdana, Arial, sans-serif;
+	color: #444;
 }
 
 h1 {
@@ -29,8 +29,8 @@ h1 {
 }
 
 .section {
-	padding: 1em 0.5em;
-	margin: 0 1em;
+	padding: 1em 1.5em;
+	margin: 0 0;
 	float: left;
 	border: solid #CCC;
 	border-width: 1px 0 0;
@@ -52,6 +52,10 @@ h1 {
 	float: right;
 }
 
+a {
+	color: #0D629E;
+}
+
 h3 {
 	margin: 1.4em 0 0.4em;	
 }
@@ -59,6 +63,11 @@ h3 {
 p {
 	margin: 0 0 0.4em;
 	line-height: 1.4em;
+}
+
+code {
+	font-family: "Courier New", monospace;
+	font-size: 0.9em;
 }
 
 dt {
@@ -69,16 +78,26 @@ dd {
 	margin: 0.2em 1em;
 }
 
-ul {
+.section ul {
 	margin-left: 0.5em;
 	list-style-type: square;
 }
 
-li {
+.section li {
 	margin-left: 1em;
+	padding: 0.15em 0;
+}
+
+.method {
+	padding: 0.5em 0.7em;
+	border-left: 1px solid #888;
+	background-color: #F5F5F5;
 }
 
 hr {
+	border: 0;
+	height: 1px;
+	background-color: #CCC;
 	clear: both;
 }
 
@@ -87,11 +106,12 @@ hr {
 	top: 0;
 	left: 0;
 	list-style: none;
-	width: 48em;
+	width: 49em;
 }
 
 .menu li {
 	float: right;
+	margin-left: 1em;
 }
 
 .menu li a {
@@ -106,8 +126,15 @@ hr {
 
 .menu li a:hover {
 	padding-top: 0.9em;
-	background-color: #0c92f2;
+	background-color: #333;
 	color: white;
 	text-decoration: none;
 }
 
+.footer {
+	font-family: Verdana, Arial, sans-serif;
+	padding: 1em 1.8em;
+	font-size: 0.7em;
+	font-style: italic;
+	color: #333;
+}
