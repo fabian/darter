@@ -28,11 +28,23 @@ class Darter_InspectionClass extends ReflectionClass {
 	public function __construct($class) {
 		parent::__construct($class);
 		
+		
+		$this->darter_className = $class;
+		
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
 	
+	
 	public function getAnnotations($annotation) {
 		return $this->annotations[$annotation];
+	}
+	public function getAnnotation($annotation) {
+		if(isset($this->annotations[$annotation][0])) {
+			return $this->annotations[$annotation][0];
+		}
+		else {
+			return "";
+		}
 	}
 	
 	public function getMethods() {
@@ -42,6 +54,18 @@ class Darter_InspectionClass extends ReflectionClass {
 		}
 		return $methods;
 	}
+	
+	public function isNotDarterClass() {
+		
+		if (!strstr($this->getName(),"Darter_")) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
 }
 
 class Darter_InspectionMethod extends ReflectionMethod {
@@ -57,6 +81,7 @@ class Darter_InspectionMethod extends ReflectionMethod {
 	public function getAnnotations($annotation) {
 		return $this->annotations[$annotation];
 	}
+	
 }
 
 ?>
