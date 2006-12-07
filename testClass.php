@@ -6,7 +6,7 @@
  * @author Fabian Vogler
  * @package PHProcks
  */
-class TestClass extends ParentClass {
+class TestClass extends ParentClass implements Stuhl {
 	
 	/**
 	 * Variable Foo describes something...
@@ -20,7 +20,7 @@ class TestClass extends ParentClass {
 	 *
 	 * @param string $world
 	 * @param string $name
-	 * @return string
+	 * @return string $helloWorld
 	 */
 	public function helloWorld($world, $name) {
 		return 'Hello ' . $world . ' to ' . $name . '!';
@@ -33,6 +33,10 @@ class TestClass extends ParentClass {
 	public function setFoo($bar) {
 		
 	}
+	
+	private function doSecret() {
+		
+	}
 }
 
 /**
@@ -41,5 +45,14 @@ class TestClass extends ParentClass {
  */
 class ParentClass {
 	
+	protected function getParentMethod() {
+		
+	}
+	
 }
+
+interface Stuhl {
+	
+}
+
 ?>
