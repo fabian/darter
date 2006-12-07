@@ -43,7 +43,7 @@ class Darter_InspectionClass extends ReflectionClass {
 			return $this->annotations[$annotation][0];
 		}
 		else {
-			return "";
+			return "undefined";
 		}
 	}
 	
@@ -66,6 +66,18 @@ class Darter_InspectionClass extends ReflectionClass {
 		
 	}
 	
+	public function getType() {
+		if($this->isInterface()) {
+			return "Interface";
+		}
+		elseif ($this->isAbstract()) {
+			return "Abstract Class";
+		}
+		else {
+			return "Class";
+		}
+	}
+	
 }
 
 class Darter_InspectionMethod extends ReflectionMethod {
@@ -79,7 +91,14 @@ class Darter_InspectionMethod extends ReflectionMethod {
 	}
 	
 	public function getAnnotations($annotation) {
-		return $this->annotations[$annotation];
+		if(isset($this->annotations[$annotation])) {
+			return $this->annotations[$annotation];
+		}
+		else {
+			return array(
+				0 => "undefined"
+			);
+		}
 	}
 	
 }
