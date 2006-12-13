@@ -10,6 +10,7 @@ class Darter_View {
 
 	private $data = array ();
 	private $template;
+	private $odd = 1;
 
 	public function __construct($template) {
 		$this->template = $template;
@@ -22,6 +23,10 @@ class Darter_View {
 	private function show($template) {
 		$this->data['template'] = $template;
 		include self :: PATH . '/' . $template . self :: SUFFIX;
+	}
+	
+	private function odd($name = 'odd') {
+		echo $this->odd++ % 2 ? $name : '';
 	}
 
 	private $layouts = array ();

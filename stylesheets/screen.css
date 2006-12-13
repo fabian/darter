@@ -124,7 +124,8 @@ hr {
 	text-decoration: none;
 }
 
-.menu li a:hover {
+.menu li a:hover,
+#overview .menu a.overview {
 	padding-top: 0.9em;
 	background-color: #333;
 	color: white;
