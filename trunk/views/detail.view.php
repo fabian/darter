@@ -35,7 +35,7 @@
 
 <ul class="content">
 		<li>
-			<a href="detail.php?classname=<?php echo $parentClass->getName(); ?>"><?php echo $parentClass->getName(); ?></a>
+			<a href="detail.php?class=<?php echo $parentClass->getName(); ?>"><?php echo $parentClass->getName(); ?></a>
 		</li>
 </ul>
 </div>
@@ -171,7 +171,7 @@ ea commodo consequat.</p>
 
 <hr />
 
-<?php include 'menu.view.php'; ?>
+<?php $this->show('menu'); ?>
 </div>
 
 </body>
