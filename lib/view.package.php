@@ -20,7 +20,7 @@ class Darter_View {
 		$this->show($this->template);
 	}
 
-	private function show($template) {
+	private function show($template, $parameter = array()) {
 		$this->data['template'] = $template;
 		include self :: PATH . '/' . $template . self :: SUFFIX;
 	}

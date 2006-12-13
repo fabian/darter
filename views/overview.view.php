@@ -14,15 +14,13 @@
 <div class="section classes odd">
 <h2 class="label">Classes</h2>
 <ul class="content">
-<?php foreach($this->classes as $class): ?>
-	<li><a href="detail.php?class=<?php echo $class; ?>"><?php echo $class ?></a></li>
-<?php endforeach; ?>
+<?php $this->show('tree', $this->classes); ?>
 </ul>
 </div>
 
 <hr />
 
-<?php include 'menu.view.php'; ?>
+<?php $this->show('menu'); ?>
 
 </div>
 
