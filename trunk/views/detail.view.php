@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title><?php echo $this->class->getName(); ?> (anomey 2.1)</title>
+<title><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?> (anomey 2.1)</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/screen.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
 
 <h1><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?></h1>
 
-<div class="section class odd">
+<div class="section class <?php $this->odd(); ?>">
 <h2 class="label">Information</h2>
 
 <dl class="content">
@@ -29,17 +29,14 @@
 </dl>
 </div>
 
-<div class="section inheritance">
+<?php if($parentClass = $this->class->getParentClass()): ?>
+<div class="section inheritance <?php $this->odd(); ?>">
 <h2 class="label">Inheritance</h2>
 
 <ul class="content">
-	<?php if($parentClass = $this->class->getParentClass()): ?>
 		<li>
-			<a href="viewClass.php?classname=<?php echo $parentClass->getName(); ?>"><?php echo $parentClass->getName(); ?></a>
+			<a href="detail.php?classname=<?php echo $parentClass->getName(); ?>"><?php echo $parentClass->getName(); ?></a>
 		</li>
-	<?php else: ?>
-		none
-	<?php endif; ?>
 </ul>
 </div>
 	<!--<ul>
@@ -49,30 +46,29 @@
 		</ul>
 		</li>
 	</ul>-->
+<?php endif; ?>
 	
 
-<div class="section interfaces odd">
+<?php if($this->class->getInterfaces()): ?>
+<div class="section interfaces <?php $this->odd(); ?>">
 <h2 class="label">Interfaces</h2>
 
 <ul class="content">
 
-<?php if($this->class->getInterfaces()): ?>
 	<?php foreach($this->class->getInterfaces() as $interface): ?>
 		<li>
-			<a href="viewClass.php?classname=<?php echo $interface->getName(); ?>"><?php echo $interface->getName(); ?></a>
+			<a href="detail.php?class=<?php echo $interface->getName(); ?>"><?php echo $interface->getName(); ?></a>
 		</li>
 	<?php endforeach; ?>
-<?php else: ?>
-	none
-<?php endif; ?>
 	<!--<li>Countable</li>
 	<li>IteratorAggregate</li>
 	<li><a href="">SomeCoolInterface</a></li>-->
 	
 </ul>
 </div>
+<?php endif; ?>
 
-<div class="section description">
+<div class="section description <?php $this->odd(); ?>">
 <h2 class="label">Description</h2>
 
 <p class="content">Lorem ipsum dolor sit amet, consectetuer
@@ -82,7 +78,7 @@ nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
 ea commodo consequat.</p>
 </div>
 
-<div class="section fields odd">
+<div class="section fields <?php $this->odd(); ?>">
 <h2 class="label">Fields</h2>
 <?php
 //var_dump($inspectionClass->getProperties());
@@ -101,7 +97,7 @@ ea commodo consequat.</p>
 </dl>
 </div>
 
-<div class="section methods">
+<div class="section methods <?php $this->odd(); ?>">
 <h2 class="label">Methods</h2>
 
 <div class="content">
@@ -175,16 +171,7 @@ ea commodo consequat.</p>
 
 <hr />
 
-<ul class="menu">
-	<li><a href="overview.php">Overview</a></li>
-	<li><a href="">Classes</a></li>
-	<li><a href="">Packages</a></li>
-</ul>
-
-<p class="footer">This <acronym
-	title="Application Programming Interface">API</acronym> documentation
-has been generated 2006-11-24 12:45 with <a
-	href="http://code.google.com/p/darter">darter</a>. Copyright 1998-2006 by The Foobar.</p>
+<?php include 'menu.view.php'; ?>
 </div>
 
 </body>
