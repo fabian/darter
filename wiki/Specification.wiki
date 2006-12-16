@@ -1,0 +1,32 @@
+#summary Details about how Darter should be implemented.
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This document describes the requirements of the implementation of Darter.
+
+= Front End Structure =
+
+The front end should consist of the following 4 pages:
+
+  * Overview
+  * Classes
+  * Packages
+  * Detail page
+
+== Overview ==
+
+The overview shows all classes and interfaces and their inheritance.
+
+== Classes ==
+
+On this page all classes are listed in an alphabetic index.
+
+== Packages ==
+
+This page lists all classes group by their [Packages packages].
+
+== Detail page ==
+
+The details page shows more information about a specific class or interface.
+
