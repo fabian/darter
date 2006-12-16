@@ -5,7 +5,7 @@ Packages can be used to group multiple classes and interfaces to show their comm
 
 = Usage example =
 
-`
+{{{
 /**
  * Some sample class.
  *
@@ -13,4 +13,5 @@ Packages can be used to group multiple classes and interfaces to show their comm
  */
 class Example {
 
-}`
+}
+}}}
