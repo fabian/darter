@@ -110,6 +110,17 @@ class Darter_InspectionClass extends ReflectionClass {
 			return "Class";
 		}
 	}
+	
+	/**
+	 * @return Darter_InspectionClass
+	 */
+	public function getParentClass() {
+		if(parent::getParentClass() != null) {
+			return new Darter_InspectionClass(parent::getParentClass()->getName());
+		} else {
+			return null;
+		}
+	}
 
 }
 
