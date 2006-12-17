@@ -2,9 +2,15 @@
 
 class Darter_TreeItem extends Darter_TreeItemContainer  {
 	private $id;
+	private $data;
 
-	public function __construct($id) {
+	public function __construct($id, $data = null) {
 		$this->id = $id;
+		$this->data = $data;
+	}
+	
+	public function getData() {
+		return $this->data;
 	}
 
 	public function __toString() {
