@@ -90,7 +90,7 @@ class Darter_InspectionClass extends ReflectionClass {
 
 	public function isNotDarterClass() {
 
-		if (!strstr($this->getName(),"Darter_")) {
+		if (!strstr($this->getName(), 'Darter')) {
 			return true;
 		}
 		else {
