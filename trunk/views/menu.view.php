@@ -1,6 +1,6 @@
 <ul class="menu">
-	<li><a href="overview.php" class="overview">Overview</a></li>
-	<li><a href="">Classes</a></li>
+	<li><a href="index.php" class="overview">Overview</a></li>
+	<li><a href="classes.php" class="classes">Classes</a></li>
 	<li><a href="">Packages</a></li>
 </ul>
 

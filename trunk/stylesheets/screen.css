@@ -125,7 +125,8 @@ hr {
 }
 
 .menu li a:hover,
-#overview .menu a.overview {
+#overview .menu a.overview,
+#classes .menu a.classes {
 	padding-top: 0.9em;
 	background-color: #333;
 	color: white;

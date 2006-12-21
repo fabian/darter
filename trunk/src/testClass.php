@@ -10,6 +10,8 @@ class TestClass extends ParentClass implements Stuhl {
 	
 	/**
 	 * Variable Foo describes something...
+	 * 
+	 * @var ParentClass
 	 */
 	private $foo = '';
 	
