@@ -4,12 +4,12 @@
 <title>Classes (anomey 2.1)</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/screen.css" />
 </head>
-<body id="classes">
+<body id="register">
 
 <div class="page">
 <p class="title">anomey 2.1</p>
 
-<h1>Classes</h1>
+<h1>Register</h1>
 
 <?php foreach($this->index as $letter => $classes): ?>
 <div class="section classes <?php $this->odd(); ?>">

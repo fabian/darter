@@ -12,6 +12,17 @@
 <h1>Overview</h1>
 
 <div class="section classes odd">
+<h2 class="label">Interfaces</h2>
+<ul class="content">
+<?php foreach($this->interfaces as $interface): ?>
+<li>
+	<a href="detail.php?class=<?php echo $interface->getName(); ?>"><?php echo $interface->getName(); ?></a>
+</li>
+<?php endforeach; ?>
+</ul>
+</div>
+
+<div class="section classes">
 <h2 class="label">Classes</h2>
 <ul class="content">
 <?php $this->show('tree', $this->classes); ?>
