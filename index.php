@@ -41,6 +41,7 @@ foreach(get_declared_classes() as $class) {
 }
 
 $overview = new Darter_View('overview');
+$overview->interfaces = Darter::getInterfaces();
 $overview->classes = $tree;
 $overview->display();
 

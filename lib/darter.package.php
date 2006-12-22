@@ -29,6 +29,21 @@ class Darter {
 		
 		return $index;
 	}
+	
+	public static function getInterfaces() {
+		$interfaces = array();
+		
+		foreach(get_declared_interfaces() as $interface) {
+			$inspection = new Darter_InspectionClass($interface);
+			if($inspection->isUserDefined() && $inspection->isNotDarterClass()) {
+				$interfaces[$inspection->getName()] = $inspection;
+			}
+		}
+		
+		ksort($interfaces);
+		
+		return $interfaces;
+	}
 }
 
 ?>
