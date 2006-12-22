@@ -10,7 +10,7 @@ This document describes the requirements of the implementation of Darter.
 The front end should consist of the following 4 pages:
 
   * Overview
-  * Classes
+  * Register
   * Packages
   * Detail page
 
@@ -18,9 +18,9 @@ The front end should consist of the following 4 pages:
 
 The overview shows all classes and interfaces and their inheritance.
 
-== Classes ==
+== Register==
 
-On this page all classes are listed in an alphabetic index.
+On this page all classes and interfaces are listed in an alphabetic index.
 
 == Packages ==
 
