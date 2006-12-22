@@ -1,5 +1,5 @@
 #summary Details about how Darter should be implemented.
-#labels Phase-Requirements,Phase-Design
+#labels Phase-Requirements,Phase-Design,Featured
 
 = Introduction =
 
@@ -29,4 +29,3 @@ This page lists all classes group by their [Packages packages].
 == Detail page ==
 
 The details page shows more information about a specific class or interface.
-
