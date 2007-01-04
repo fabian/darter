@@ -22,6 +22,7 @@ class Darter_View {
 
 	private function show($template, $parameter = array()) {
 		$this->data['template'] = $template;
+		$this->data['copyright'] = Darter_Properties::get('darter.copyright');
 		include self :: PATH . '/' . $template . self :: SUFFIX;
 	}
 	

@@ -4,7 +4,7 @@ Darter_Package::load('lib');
 Darter_Inspection::load();
 
 $register = new Darter_View('register');
-$register->index = Darter::getIndexedClasses();
+$register->index = Darter::getIndex();
 $register->display();
 
 ?>

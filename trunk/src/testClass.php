@@ -55,6 +55,11 @@ class ParentClass {
 
 interface Stuhl {
 	
+	/**
+	 * Sets foo
+	 * @param string $bar
+	 */
+	public function setFoo($bar);
 }
 
 ?>
