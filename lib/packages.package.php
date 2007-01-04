@@ -13,7 +13,7 @@ class Darter_Package {
 	
 	private static function loadPackage($path) {
 		foreach (scandir($path) as $file) {
-			if (substr($file, count($file) - 13, 13) == '.package.php') {
+			if (substr($file, -12) == '.package.php') {
 				include_once $path . '/' . $file;
 			}
 		}

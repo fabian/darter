@@ -8,8 +8,9 @@ class Darter_Inspection {
 
 	public static function load() {
 		$path = Darter_Properties::get('darter.source');
+		$suffixLength = strlen(Darter_Properties::get('darter.suffix'));
 		foreach (scandir($path) as $file) {
-			if (substr($file, count($file) - 5, 5) == '.php') {
+			if (substr($file, -$suffixLength) == Darter_Properties::get('darter.suffix')) {
 				include_once $path . '/' . $file;
 			}
 		}
