@@ -37,7 +37,7 @@ class Darter {
 		
 		foreach(get_declared_classes() as $class) {
 			$inspection = new Darter_InspectionClass($class);
-			if($inspection->isUserDefined() && $inspection->isNotDarterClass()) {
+			if($inspection->isUserDefined() && $inspection->isNotExcluded()) {
 				$classes[$inspection->getName()] = $inspection;
 			}
 		}
@@ -121,7 +121,7 @@ class Darter {
 		
 		foreach(get_declared_interfaces() as $interface) {
 			$inspection = new Darter_InspectionClass($interface);
-			if($inspection->isUserDefined() && $inspection->isNotDarterClass()) {
+			if($inspection->isUserDefined() && $inspection->isNotExcluded()) {
 				$interfaces[$inspection->getName()] = $inspection;
 			}
 		}
