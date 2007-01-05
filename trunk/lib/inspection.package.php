@@ -89,15 +89,26 @@ class Darter_InspectionClass extends ReflectionClass {
 		return $properties;
 	}
 
-	public function isNotDarterClass() {
-
-		if (!strstr($this->getName(), 'Darter')) {
-			return true;
+	public function isNotExcluded() {
+		$excludes = Darter_Properties::get('darter.exclude');
+		foreach(explode(',', $excludes) as $exclude) {
+			if(substr($exclude, 0, 1) == '*') {
+				$exclude = substr($exclude, 1);
+				if (substr($this->getName(), -strlen($exclude)) == $exclude) {
+					return false;
+				}
+			} elseif (substr($exclude, -1) == '*') {
+				$exclude = substr($exclude, 0, -1);
+				if (substr($this->getName(), 0, strlen($exclude)) == $exclude) {
+					return false;
+				}
+			} else {
+				if ($this->getName() == $exclude) {
+					return false;
+				}
+			}
 		}
-		else {
-			return false;
-		}
-
+		return true;
 	}
 
 	public function getType() {
