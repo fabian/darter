@@ -1,9 +1,5 @@
 <?php
 
-class Darter_AuthorTag {
-
-}
-
 class Darter_Inspection {
 
 	public static function load() {
@@ -19,14 +15,16 @@ class Darter_Inspection {
 	public static function parseAnnotations($comment) {
 		$annotations = array();
 
-		preg_match_all('/@([A-Za-z]*)( ([$A-Za-z ]*))?/', $comment, $matches);
-		foreach($matches[1] as $key => $annotation) {
-			if(!isset($annotations[$annotation])) {
-				$annotations[$annotation] = array();
+		foreach(get_declared_classes() as $class) {
+			$reflection = new ReflectionClass($class);
+			if($reflection->implementsInterface('Darter_Annotation')) {
+				preg_match_all(call_user_func(array($class, 'getSignature')), $comment, $matches);
+				if(count($matches[1]) > 0) {
+					$annotations[] = new $class($matches[1]);
+				}
 			}
-
-			$annotations[$annotation][] = $matches[3][$key];
 		}
+
 
 		return $annotations;
 	}
@@ -35,7 +33,7 @@ class Darter_Inspection {
 class Darter_InspectionProperty extends ReflectionProperty {
 
 	private $modifier;
-	
+
 	public function getModifier() {
 		return $this->modifier;
 	}
@@ -61,16 +59,8 @@ class Darter_InspectionClass extends ReflectionClass {
 	}
 
 
-	public function getAnnotations($annotation) {
-		return $this->annotations[$annotation];
-	}
-	public function getAnnotation($annotation) {
-		if(isset($this->annotations[$annotation][0])) {
-			return $this->annotations[$annotation][0];
-		}
-		else {
-			return "undefined";
-		}
+	public function getAnnotations() {
+		return $this->annotations;
 	}
 
 	public function getMethods() {
@@ -122,7 +112,7 @@ class Darter_InspectionClass extends ReflectionClass {
 			return "Class";
 		}
 	}
-	
+
 	/**
 	 * @return Darter_InspectionClass
 	 */
@@ -146,15 +136,8 @@ class Darter_InspectionMethod extends ReflectionMethod {
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
 
-	public function getAnnotations($annotation) {
-		if(isset($this->annotations[$annotation])) {
-			return $this->annotations[$annotation];
-		}
-		else {
-			return array(
-			0 => "undefined"
-			);
-		}
+	public function getAnnotations() {
+		return $this->annotations;
 	}
 
 }
