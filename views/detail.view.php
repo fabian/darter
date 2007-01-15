@@ -15,17 +15,10 @@
 <h2 class="label">Information</h2>
 
 <dl class="content">
-	<dt>Author</dt>
-	<dd><?php echo $this->class->getAnnotation('author') ?></dd>
-	<dt>Package</dt>
-	<dd>
-		
-		<?php if ($this->class->getAnnotation('package') != "undefined"): ?>
-				<a href="#"><?php echo $this->class->getAnnotation('package') ?></a>
-		<?php else: ?>
-				<?php echo $this->class->getAnnotation('package'); ?>
-		<?php endif; ?>
-	</dd>
+	<?php foreach($this->class->getAnnotations() as $annotation): ?>
+		<dt><?php echo $annotation->getTitle() ?></dt>
+		<dd><?php echo $annotation->getBody() ?></dd>
+	<?php endforeach; ?>
 </dl>
 </div>
 
