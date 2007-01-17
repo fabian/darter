@@ -11,6 +11,7 @@
 
 <h1><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?></h1>
 
+<?php if(count($this->class->getAnnotations()) > 0): ?>
 <div class="section class <?php $this->odd(); ?>">
 <h2 class="label">Information</h2>
 
@@ -21,6 +22,7 @@
 	<?php endforeach; ?>
 </dl>
 </div>
+<?php endif; ?>
 
 <?php if($parentClass = $this->class->getParentClass()): ?>
 <div class="section inheritance <?php $this->odd(); ?>">
@@ -61,21 +63,17 @@
 </div>
 <?php endif; ?>
 
+<?php if($this->class->getDescription() != ''): ?>
 <div class="section description <?php $this->odd(); ?>">
 <h2 class="label">Description</h2>
 
-<p class="content">Lorem ipsum dolor sit amet, consectetuer
-adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
-ea commodo consequat.</p>
+<p class="content"><?php echo $this->class->getDescription(); ?></p>
 </div>
+<?php endif; ?>
 
+<?php if(count($this->class->getProperties()) > 0): ?>
 <div class="section fields <?php $this->odd(); ?>">
 <h2 class="label">Fields</h2>
-<?php
-//var_dump($inspectionClass->getProperties());
-?>
 <dl class="content">
 <?php foreach($this->class->getProperties() as $property): ?>
 		<dt><code><?php echo $property->getModifier(); ?> $<?php echo $property->getName() ?>
@@ -89,6 +87,7 @@ ea commodo consequat.</p>
 	-->
 </dl>
 </div>
+<?php endif; ?>
 
 <div class="section methods <?php $this->odd(); ?>">
 <h2 class="label">Methods</h2>
