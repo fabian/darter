@@ -28,6 +28,19 @@ class Darter_Inspection {
 
 		return $annotations;
 	}
+
+	public static function parseDescription($comment) {
+		$array = explode( "\n" , $comment );
+
+		$sentence = '';
+		foreach($array as $line) {
+			if (preg_match("/\* ([^@].*)/", $line, $matches)) {
+				$sentence .= trim($matches[1]) . ' ';
+			}
+		}
+
+		return trim($sentence);
+	}
 }
 
 class Darter_InspectionProperty extends ReflectionProperty {
@@ -47,6 +60,8 @@ class Darter_InspectionProperty extends ReflectionProperty {
 
 class Darter_InspectionClass extends ReflectionClass {
 
+	private $description;
+
 	private $annotations;
 
 	public function __construct($class) {
@@ -55,9 +70,14 @@ class Darter_InspectionClass extends ReflectionClass {
 
 		$this->darter_className = $class;
 
+		$this->description = Darter_Inspection::parseDescription($this->getDocComment());
+
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
-
+	
+	public function getDescription() {
+		return $this->description;
+	}
 
 	public function getAnnotations() {
 		return $this->annotations;

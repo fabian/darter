@@ -53,6 +53,11 @@ class ParentClass {
 	
 }
 
+/**
+ * My personal interface.
+ * 
+ * Or something like that.
+ */
 interface Stuhl {
 	
 	/**
