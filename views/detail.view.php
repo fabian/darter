@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?> (anomey 2.1)</title>
+<title><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?> (<?php echo $this->project; ?>)</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/screen.css" />
 </head>
 <body>
 
 <div class="page">
-<p class="title">anomey 2.1</p>
+<p class="title"><?php echo $this->project; ?></p>
 
 <h1><?php echo $this->class->getType() ?> <?php echo $this->class->getName(); ?></h1>
 
