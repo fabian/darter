@@ -6,6 +6,6 @@
 
 <p class="footer">This <acronym
 	title="Application Programming Interface">API</acronym> documentation
-has been generated 2006-11-24 12:45 with <a
+has been generated <?php echo date('Y-m-d'); ?> <?php echo date('H:i'); ?> with <a
 	href="http://code.google.com/p/darter">Darter</a>. <?php echo $this->copyright; ?></p>
 
