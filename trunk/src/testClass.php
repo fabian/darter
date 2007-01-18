@@ -4,7 +4,7 @@
  * and its usage.
  *
  * @author Fabian Vogler
- * @package PHProcks
+ * @package php.rocks
  */
 class TestClass extends ParentClass implements Stuhl {
 	

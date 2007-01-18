@@ -14,12 +14,22 @@ class Darter_Inspection {
 
 	public static function parseAnnotations($comment) {
 		$annotations = array();
-
+		
+		$annotationClasses = array();
 		foreach(get_declared_classes() as $class) {
 			$reflection = new ReflectionClass($class);
 			if($reflection->implementsInterface('Darter_Annotation')) {
-				preg_match_all(call_user_func(array($class, 'getSignature')), $comment, $matches);
-				if(count($matches[1]) > 0) {
+				$annotationClasses[] = $reflection;
+			}
+		}
+		
+		$array = explode( "\n" , $comment );
+
+		$sentence = '';
+		foreach($array as $line) {
+			foreach($annotationClasses as $reflection) {
+				if (preg_match('/\* @' . call_user_func(array($reflection->getName(), 'getName')) . ' ([^\/?]*)/', $line, $matches)) {
+					$class = $reflection->getName();
 					$annotations[] = new $class($matches[1]);
 				}
 			}
@@ -81,6 +91,17 @@ class Darter_InspectionClass extends ReflectionClass {
 
 	public function getAnnotations() {
 		return $this->annotations;
+	}
+	
+	public function getAnnotationsByClass($class) {
+		$annotations = array();
+		foreach($this->annotations as $annotation) {
+			if($annotation instanceof  $class) {
+				$annotations[] = $annotation;
+			}
+		}
+		
+		return $annotations;
 	}
 
 	public function getMethods() {

@@ -2,7 +2,7 @@
 
 interface Darter_Annotation {
 	
-	public static function getSignature();	
+	public static function getName();	
 	public function __construct($match);	
 	public function getTitle();	
 	public function getBody();
@@ -12,12 +12,12 @@ class Darter_AuthorAnnotation implements Darter_Annotation {
 	
 	private $author;
 	
-	public static function getSignature() {
-		return '/@author ([$A-Za-z ]*)/';
+	public static function getName() {
+		return 'author';
 	}
 	
 	public function __construct($match) {
-		$this->author = $match[0];
+		$this->author = $match;
 	}
 	
 	public function getTitle() {
@@ -33,12 +33,12 @@ class Darter_PackageAnnotation implements Darter_Annotation {
 	
 	private $package;
 	
-	public static function getSignature() {
-		return '/@package ([$A-Za-z ]*)/';
+	public static function getName() {
+		return 'package';
 	}
 	
 	public function __construct($match) {
-		$this->package = $match[0];
+		$this->package = $match;
 	}
 	
 	public function getTitle() {
@@ -46,7 +46,7 @@ class Darter_PackageAnnotation implements Darter_Annotation {
 	}
 	
 	public function getBody() {
-		return $this->package;
+		return '<a href="list.php?package=' . $this->package . '">' . $this->package . '</a>';
 	}
 }
 
@@ -54,12 +54,12 @@ class Darter_CopyrightAnnotation implements Darter_Annotation {
 	
 	private $copyright;
 	
-	public static function getSignature() {
-		return '/@copyright ([$A-Za-z ]*)/';
+	public static function getName() {
+		return 'copyright';
 	}
 	
 	public function __construct($match) {
-		$this->copyright = $match[0];
+		$this->copyright = $match;
 	}
 	
 	public function getTitle() {
