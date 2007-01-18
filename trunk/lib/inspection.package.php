@@ -28,7 +28,7 @@ class Darter_Inspection {
 		$sentence = '';
 		foreach($array as $line) {
 			foreach($annotationClasses as $reflection) {
-				if (preg_match('/\* @' . call_user_func(array($reflection->getName(), 'getName')) . ' ([^\/?]*)/', $line, $matches)) {
+				if (preg_match('/\* @' . call_user_func(array($reflection->getName(), 'getName')) . ' (.*)/', $line, $matches)) {
 					$class = $reflection->getName();
 					$annotations[] = new $class($matches[1]);
 				}
