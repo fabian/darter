@@ -30,7 +30,7 @@
 
 <ul class="content">
 		<li>
-			<a href="detail.php?class=<?php echo $parentClass->getName(); ?>"><?php echo $parentClass->getName(); ?></a>
+			<a href="detail.php?class=<?php echo urlencode($parentClass->getName()); ?>"><?php echo $parentClass->getName(); ?></a>
 		</li>
 </ul>
 </div>
