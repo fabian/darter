@@ -126,7 +126,7 @@ hr {
 
 .menu li a:hover,
 #overview .menu a.overview,
-#register .menu a.register {
+#index .menu a.index {
 	padding-top: 0.9em;
 	background-color: #333;
 	color: white;

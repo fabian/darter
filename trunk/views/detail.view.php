@@ -161,6 +161,12 @@
 </div>
 </div>
 
+<div class="section file <?php $this->odd(); ?>">
+<h2 class="label">Location</h2>
+
+<p class="content">Line <?php echo $this->class->getStartLine(); ?> of file <?php echo $this->class->getDarterFileName(); ?>.</p>
+</div>
+
 <hr />
 
 <?php $this->show('menu'); ?>
