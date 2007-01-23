@@ -11,7 +11,14 @@
 
 <h1>Overview</h1>
 
-<div class="section classes odd">
+<div class="section description odd">
+<h2 class="label">Description</h2>
+<p class="content">Darter aims to be a pure PHP implementation of a PHP API documentation generator. Like Javadoc 
+it generates an API documentation in HTML format. To do this task it uses the PHP Reflection API which provides 
+access to the class definitions and their comments.</p>
+</div>
+
+<div class="section interfaces">
 <h2 class="label">Interfaces</h2>
 <ul class="content">
 <?php foreach($this->interfaces as $interface): ?>
@@ -22,7 +29,7 @@
 </ul>
 </div>
 
-<div class="section classes">
+<div class="section classes odd">
 <h2 class="label">Classes</h2>
 <ul class="content">
 <?php $this->show('tree', $this->classes); ?>

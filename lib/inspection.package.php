@@ -120,7 +120,7 @@ class Darter_InspectionClass extends ReflectionClass {
 		return $properties;
 	}
 
-	public function isNotExcluded() {
+public function isNotExcluded() {
 		$excludes = Darter_Properties::get('darter.exclude');
 		foreach(explode(',', $excludes) as $exclude) {
 			if(substr($exclude, 0, 1) == '*') {
@@ -140,6 +140,10 @@ class Darter_InspectionClass extends ReflectionClass {
 			}
 		}
 		return true;
+	}
+	
+	public function getDarterFileName() {
+		return substr($this->getFileName(), strlen(substr(dirname(__FILE__), 0 ,-4) . '/' . Darter_Properties::get('darter.source') . '/'));
 	}
 
 	public function getType() {

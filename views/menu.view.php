@@ -1,7 +1,7 @@
 <ul class="menu">
 	<li><a href="index.php" class="overview">Overview</a></li>
-	<li><a href="register.php" class="register">Register</a></li>
 	<li><a href="">Packages</a></li>
+	<li><a href="all.php" class="index">Index</a></li>
 </ul>
 
 <p class="footer">This <acronym
