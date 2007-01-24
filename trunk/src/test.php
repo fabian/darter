@@ -6,7 +6,7 @@
  * @author Fabian Vogler
  * @package php.rocks
  */
-class TestClass extends ParentClass implements Stuhl {
+class Penguin extends Animal {
 	
 	/**
 	 * Variable Foo describes something...
@@ -28,14 +28,6 @@ class TestClass extends ParentClass implements Stuhl {
 		return 'Hello ' . $world . ' to ' . $name . '!';
 	}
 	
-	/**
-	 * Sets foo
-	 * @param string $bar
-	 */
-	public function setFoo($bar) {
-		
-	}
-	
 	private function doSecret() {
 		
 	}
@@ -45,11 +37,26 @@ class TestClass extends ParentClass implements Stuhl {
  * Just an exaple parent Class
  * @author Michi Gysel
  */
-class ParentClass {
+class Animal {
 	
 	protected function getParentMethod() {
 		
 	}
+	
+}
+
+class Water extends Element implements Drinkable, Liquid {
+	
+	/**
+	 * Sets foo
+	 * @param string $bar
+	 */
+	public function setFoo($bar) {
+		
+	}
+}
+
+abstract class Element {
 	
 }
 
@@ -58,13 +65,17 @@ class ParentClass {
  * 
  * Or something like that.
  */
-interface Stuhl {
+interface Drinkable {
 	
 	/**
 	 * Sets foo
 	 * @param string $bar
 	 */
 	public function setFoo($bar);
+}
+
+interface Liquid {
+	
 }
 
 ?>

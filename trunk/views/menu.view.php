@@ -1,5 +1,5 @@
 <ul class="menu">
-	<li><a href="index.php" class="overview">Overview</a></li>
+	<li><a href="./" class="overview">Overview</a></li>
 	<li><a href="">Packages</a></li>
 	<li><a href="all.php" class="index">Index</a></li>
 </ul>
