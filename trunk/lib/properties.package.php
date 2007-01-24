@@ -4,7 +4,7 @@ class Darter_Properties {
 
 	const PATH = 'config';
 
-	const SUFFIX = '.properties';
+	const SUFFIX = '.ini';
 
 	private function __construct() {
 		// no instance of this class

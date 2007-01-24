@@ -4,6 +4,7 @@ Darter_Package::load('lib');
 Darter_Inspection::load();
 
 $overview = new Darter_View('overview');
+$overview->description = Darter_Properties::get('project.description');
 $overview->interfaces = Darter::getInterfaces();
 $overview->classes = Darter::getClassTree();
 $overview->display();
