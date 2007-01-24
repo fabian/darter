@@ -90,6 +90,7 @@
 </div>
 <?php endif; ?>
 
+<?php if(count($this->class->getMethods()) > 0): ?>
 <div class="section methods <?php $this->odd(); ?>">
 <h2 class="label">Methods</h2>
 
@@ -161,11 +162,12 @@
 
 </div>
 </div>
+<?php endif; ?>
 
 <div class="section file <?php $this->odd(); ?>">
 <h2 class="label">Location</h2>
 
-<p class="content">Line <?php echo $this->class->getStartLine(); ?> of file <?php echo $this->class->getDarterFileName(); ?>.</p>
+<p class="content">Line <?php echo $this->class->getStartLine(); ?> of file <?php echo $this->class->getDarterFileName(); ?></p>
 </div>
 
 <hr />
