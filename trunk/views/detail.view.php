@@ -101,17 +101,7 @@
 <?php foreach($this->class->getMethods() as $method): ?>
 	
 	<li>
-		<code>
-			<a href="#<?php echo $method->getName(); ?>">
-				<?php echo $method->getName(); ?></a>
-				<?php $i = 0; ?>
-				(<?php foreach($method->getParameters() as $param): ?>
-					<?php if($i++ > 0): ?>
-						,
-					<?php endif; ?>
-					$<?php echo $param->getName(); ?>
-				<?php endforeach; ?>)
-		</code>
+		<code><a href="#<?php echo $method->getName(); ?>"><?php echo $method->getName(); ?></a></code>
 	</li>
 	
 <?php endforeach; ?>
@@ -122,7 +112,8 @@
 		href="">getName</a>(string $value)</code></li>-->
 </ul>
 <?php foreach($this->class->getMethods() as $method): ?>
-<h3 id="<?= $method->getName(); ?>"><?= $method->getName(); ?>
+<h3 id="<?= $method->getName(); ?>">
+<?= $method->getName(); ?>
 				(<?php
 				$first = true;
 				foreach($method->getParameters() as $param) {
@@ -156,6 +147,10 @@
 		<?php foreach ($method->getAnnotations('return') as $return): ?>
 			<dd><code><?php echo $return; ?></code></dd>
 		<?php endforeach; ?>
+		<?php if($method->getDeclaringClass()->getName() != $this->class->getName()): ?>
+		<dt>Declaration</dt>
+		<dd><?php echo $method->getDeclaringClass()->getType(); ?> <?php echo $method->getDeclaringClass()->getName(); ?></dd>
+		<?php endif; ?>
 	</dl>
 </div>
 <?php endforeach; ?>
@@ -167,7 +162,12 @@
 <div class="section file <?php $this->odd(); ?>">
 <h2 class="label">Location</h2>
 
-<p class="content">Line <?php echo $this->class->getStartLine(); ?> of file <?php echo $this->class->getDarterFileName(); ?></p>
+<p class="content"><?php if($this->class->isUserDefined()): ?>
+Line <?php echo $this->class->getStartLine(); ?> of file <?php echo $this->class->getDarterFileName(); ?>
+<?php else: ?>
+Internal class
+<?php if($this->class->getExtensionName() != ''): ?> (Extension <?php echo $this->class->getExtensionName(); ?>)<?php endif; ?>
+<?php endif; ?></p>
 </div>
 
 <hr />

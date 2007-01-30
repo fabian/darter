@@ -14,7 +14,7 @@ class Darter_Inspection {
 
 	public static function parseAnnotations($comment) {
 		$annotations = array();
-		
+
 		$annotationClasses = array();
 		foreach(get_declared_classes() as $class) {
 			$reflection = new ReflectionClass($class);
@@ -22,7 +22,7 @@ class Darter_Inspection {
 				$annotationClasses[] = $reflection;
 			}
 		}
-		
+
 		$array = explode( "\n" , $comment );
 
 		$sentence = '';
@@ -84,7 +84,7 @@ class Darter_InspectionClass extends ReflectionClass {
 
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
-	
+
 	public function getDescription() {
 		return $this->description;
 	}
@@ -92,7 +92,7 @@ class Darter_InspectionClass extends ReflectionClass {
 	public function getAnnotations() {
 		return $this->annotations;
 	}
-	
+
 	public function getAnnotationsByClass($class) {
 		$annotations = array();
 		foreach($this->annotations as $annotation) {
@@ -100,27 +100,29 @@ class Darter_InspectionClass extends ReflectionClass {
 				$annotations[] = $annotation;
 			}
 		}
-		
+
 		return $annotations;
 	}
 
 	public function getMethods() {
 		$methods = array();
 		foreach(parent::getMethods() as $method) {
-			$methods[] = new Darter_InspectionMethod($this->getName(), $method->getName());
+			$methods[$method->getName()] = new Darter_InspectionMethod($this->getName(), $method->getName());
 		}
+		ksort($methods);
 		return $methods;
 	}
 
 	public function getProperties() {
 		$properties = array();
 		foreach(parent::getProperties() as $property) {
-			$properties[] = new Darter_InspectionProperty($this->getName(), $property->getName());
+			$properties[$property->getName()] = new Darter_InspectionProperty($this->getName(), $property->getName());
 		}
+		ksort($properties);
 		return $properties;
 	}
 
-public function isNotExcluded() {
+	public function isNotExcluded() {
 		$excludes = Darter_Properties::get('darter.exclude');
 		foreach(explode(',', $excludes) as $exclude) {
 			if(substr($exclude, 0, 1) == '*') {
@@ -141,7 +143,7 @@ public function isNotExcluded() {
 		}
 		return true;
 	}
-	
+
 	public function getDarterFileName() {
 		return substr($this->getFileName(), strlen(substr(dirname(__FILE__), 0 ,-4) . '/' . Darter_Properties::get('darter.source') . '/'));
 	}
@@ -179,6 +181,10 @@ class Darter_InspectionMethod extends ReflectionMethod {
 		parent::__construct($class, $name);
 
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
+	}
+	
+	public function getDeclaringClass() {
+		return new Darter_InspectionClass(parent::getDeclaringClass()->getName());
 	}
 
 	public function getAnnotations() {
