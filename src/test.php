@@ -17,7 +17,7 @@ class Penguin extends Animal {
 	
 	
 	/**
-	 * This cool method return foo bar. Or
+	 * This cool method returns foo bar. Or
 	 * at least something similar.
 	 *
 	 * @param string $world
@@ -28,7 +28,7 @@ class Penguin extends Animal {
 		return 'Hello ' . $world . ' to ' . $name . '!';
 	}
 	
-	private function doSecret() {
+	private final function doSecret() {
 		
 	}
 }
