@@ -17,9 +17,14 @@
 <h2 class="label">Information</h2>
 
 <dl class="content">
-	<?php foreach($this->class->getAnnotations() as $annotation): ?>
-		<dt><?php echo $annotation->getTitle() ?></dt>
+	<?php foreach($this->class->getAnnotations() as $annotations): ?>
+	<?php $i = 0; ?>
+	<?php foreach($annotations as $annotation): ?>
+		<?php if($i++ == 0): ?>
+		<dt><?php echo $annotation->getTitle() ?><?php if(count($annotations) > 1): ?>s<?php endif; ?></dt>
+		<?php endif; ?>
 		<dd><?php echo $annotation->getBody() ?></dd>
+	<?php endforeach; ?>
 	<?php endforeach; ?>
 </dl>
 </div>
@@ -35,13 +40,6 @@
 		</li>
 </ul>
 </div>
-	<!--<ul>
-		<li>ArrayObject
-		<ul>
-			<li>Collection</li>
-		</ul>
-		</li>
-	</ul>-->
 <?php endif; ?>
 	
 
@@ -113,7 +111,7 @@
 </ul>
 <?php foreach($this->class->getMethods() as $method): ?>
 <h3 id="<?= $method->getName(); ?>">
-<?= $method->getName(); ?>
+<?php echo $method->getDeclaration(); ?> <?= $method->getName(); ?>
 				(<?php
 				$first = true;
 				foreach($method->getParameters() as $param) {
@@ -133,20 +131,18 @@
 	
 	<!--<?= var_dump($method) ?>-->
 	
-	<p>Description</p>
+	<p><?php echo $method->getDescription(); ?></p>
 	
 	<dl>
-		<dt>Parameters</dt>
-		<!--<dd><code>$value</code> - the value</dd>-->
-		<?php foreach ($method->getAnnotations('param') as $param): ?>
-			<dd><code><?php echo $param; ?></code></dd>
-		<?php endforeach; ?>
-		<dt>Returns</dt>
-		<!--<dd>the name</dd>-->
-		<!--<dd><code>$value</code> - the value</dd>-->
-		<?php foreach ($method->getAnnotations('return') as $return): ?>
-			<dd><code><?php echo $return; ?></code></dd>
-		<?php endforeach; ?>
+	<?php foreach($method->getAnnotations() as $annotations): ?>
+	<?php $i = 0; ?>
+	<?php foreach($annotations as $annotation): ?>
+		<?php if($i++ == 0): ?>
+		<dt><?php echo $annotation->getTitle() ?><?php if(count($annotations) > 1): ?>s<?php endif; ?></dt>
+		<?php endif; ?>
+		<dd><?php echo $annotation->getBody() ?></dd>
+	<?php endforeach; ?>
+	<?php endforeach; ?>
 		<?php if($method->getDeclaringClass()->getName() != $this->class->getName()): ?>
 		<dt>Declaration</dt>
 		<dd><?php echo $method->getDeclaringClass()->getType(); ?> <?php echo $method->getDeclaringClass()->getName(); ?></dd>

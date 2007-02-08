@@ -28,9 +28,14 @@ class Darter_Inspection {
 		$sentence = '';
 		foreach($array as $line) {
 			foreach($annotationClasses as $reflection) {
+				$name = call_user_func(array($reflection->getName(), 'getName'));
 				if (preg_match('/\* @' . call_user_func(array($reflection->getName(), 'getName')) . ' (.*)/', $line, $matches)) {
 					$class = $reflection->getName();
-					$annotations[] = new $class($matches[1]);
+					$annotation = new $class($matches[1]);
+					if(!isset($annotations[$name])) {
+						$annotations[$name] = array();
+					}
+					$annotations[$name][] = $annotation;
 				}
 			}
 		}
@@ -175,22 +180,50 @@ class Darter_InspectionClass extends ReflectionClass {
 
 class Darter_InspectionMethod extends ReflectionMethod {
 
+	private $description;
+
 	private $annotations;
 
 	public function __construct($class, $name) {
 		parent::__construct($class, $name);
 
+		$this->description = Darter_Inspection::parseDescription($this->getDocComment());
+
 		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
 	}
-	
+
 	public function getDeclaringClass() {
 		return new Darter_InspectionClass(parent::getDeclaringClass()->getName());
+	}
+
+	public function getDescription() {
+		return $this->description;
 	}
 
 	public function getAnnotations() {
 		return $this->annotations;
 	}
 
+	public function getVisibility() {
+		if($this->isPrivate()) {
+			return 'private';
+		} elseif($this->isProtected()) {
+			return 'protected';
+		} else {
+			return 'public';
+		}
+	}
+	
+	public function getDeclaration() {
+		$declaration = $this->getVisibility();
+		if($this->isFinal()) {
+			$declaration .= ' final';
+		}
+		if($this->isAbstract()) {
+			$declaration .= ' abstract';
+		}
+		return $declaration;
+	}
 }
 
 ?>

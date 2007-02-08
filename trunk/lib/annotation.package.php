@@ -8,6 +8,30 @@ interface Darter_Annotation {
 	public function getBody();
 }
 
+class Darter_ParameterAnnotation implements Darter_Annotation {
+	
+	private $type;
+	
+	private $name;
+	
+	public static function getName() {
+		return 'param';
+	}
+	
+	public function __construct($match) {
+		$this->type = $match;
+		$this->name = $match;
+	}
+	
+	public function getTitle() {
+		return 'Parameter';
+	}
+	
+	public function getBody() {
+		return $this->type;
+	}
+}
+
 class Darter_AuthorAnnotation implements Darter_Annotation {
 	
 	private $author;
