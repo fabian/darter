@@ -1,4 +1,6 @@
 #summary Screenshots of darter in action
 #labels Featured
 
-Screenshot of the details of a class.
+= Detail page =
+
+http://darter.googlecode.com/svn/wiki/screenshot-class.png
