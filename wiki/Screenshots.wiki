@@ -1,0 +1,4 @@
+#summary Screenshots of darter in action
+#labels Featured
+
+Screenshot of the details of a class.
