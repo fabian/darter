@@ -13,6 +13,7 @@ class Darter_View {
 	private $odd = 1;
 
 	public function __construct($template) {
+		date_default_timezone_set(Darter_Properties::get('darter.timezone'));
 		$this->template = $template;
 	}
 
@@ -26,7 +27,7 @@ class Darter_View {
 		$this->data['project'] = Darter_Properties::get('project.name');
 		include self :: PATH . '/' . $template . self :: SUFFIX;
 	}
-	
+
 	private function odd($name = 'odd') {
 		echo $this->odd++ % 2 ? $name : '';
 	}
