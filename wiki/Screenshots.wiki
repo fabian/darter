@@ -3,4 +3,4 @@
 
 = Detail page =
 
-http://darter.googlecode.com/svn/wiki/screenshot-class.png
+||http://darter.googlecode.com/svn/wiki/screenshot-class.png||
