@@ -1,7 +1,7 @@
 <ul class="menu">
 	<li><a href="./" class="overview">Overview</a></li>
-	<li><a href="">Packages</a></li>
-	<li><a href="all.php" class="index">Index</a></li>
+	<li><a href="./packages.php" class="packages">Packages</a></li>
+	<li><a href="./all.php" class="index">Index</a></li>
 </ul>
 
 <p class="footer">This <acronym

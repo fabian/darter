@@ -98,15 +98,12 @@ class Darter_InspectionClass extends ReflectionClass {
 		return $this->annotations;
 	}
 
-	public function getAnnotationsByClass($class) {
-		$annotations = array();
-		foreach($this->annotations as $annotation) {
-			if($annotation instanceof  $class) {
-				$annotations[] = $annotation;
-			}
+	public function getAnnotationsByName($name) {
+		if(isset($this->annotations[$name])) {
+			return $this->annotations[$name];
+		} else {
+			return array();
 		}
-
-		return $annotations;
 	}
 
 	public function getMethods() {

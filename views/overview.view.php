@@ -20,10 +20,9 @@
 <div class="section packages">
 <h2 class="label">Packages</h2>
 <ul class="content">
-<li><a href="package.php?package=foo">anomey</a></li>
-<li><a href="package.php?package=foo">anomey.test</a></li>
-<li><a href="package.php?package=foo">anomey.service</a></li>
-<li><a href="package.php?package=foo">anomey.service.rest</a></li>
+<?php foreach($this->packages as $package => $elements): ?>
+<li><a href="packages.php#package_<?php echo $package; ?>"><?php echo $package; ?></a></li>
+<?php endforeach; ?>
 </ul>
 </div>
 

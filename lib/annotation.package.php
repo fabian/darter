@@ -65,12 +65,16 @@ class Darter_PackageAnnotation implements Darter_Annotation {
 		$this->package = $match;
 	}
 	
+	public function getPackage() {
+		return $this->package;
+	}
+	
 	public function getTitle() {
 		return 'Package';
 	}
 	
 	public function getBody() {
-		return '<a href="list.php?package=' . $this->package . '">' . $this->package . '</a>';
+		return '<a href="packages.php#package_' . $this->getPackage() . '">' . $this->getPackage() . '</a>';
 	}
 }
 
