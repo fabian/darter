@@ -17,8 +17,8 @@
 <?php endforeach; ?></p> --> 
 
 <?php foreach($this->index as $letter => $elements): ?>
-<div class="section classes <?php $this->odd(); ?>">
-<h2 class="label" id="<?php echo $letter; ?>"><?php echo $letter; ?></h2>
+<div class="section index <?php $this->odd(); ?>">
+<h2 class="label" id="letter_<?php echo strtolower($letter); ?>"><?php echo $letter; ?></h2>
 <ul class="content">
 <?php foreach($elements as $element): ?>
 	<?php switch(true):	case ($element instanceof ReflectionMethod): ?>
