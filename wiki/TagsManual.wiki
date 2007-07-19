@@ -45,7 +45,7 @@ These Tags are recognised by Darter:
 
 Packages can be used to group multiple classes and interfaces to show their common bond.
 
-== Usage example ==
+=== Usage example ===
 
 {{{
 /**
@@ -57,4 +57,3 @@ class Example {
 
 }
 }}}
-
