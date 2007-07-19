@@ -82,7 +82,7 @@ class Water extends Element implements Drinkable, Liquid {
 
 /**
  * @package elements
- *
+ * @version 0.2
  */
 class SaltWater extends Water {
 	
