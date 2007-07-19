@@ -145,7 +145,10 @@
 	<?php endforeach; ?>
 		<?php if($method->getDeclaringClass()->getName() != $this->class->getName()): ?>
 		<dt>Declaration</dt>
-		<dd><?php echo $method->getDeclaringClass()->getType(); ?> <?php echo $method->getDeclaringClass()->getName(); ?></dd>
+		<dd><?php echo $method->getDeclaringClass()->getType(); ?> 
+			<a href="?class=<?php echo $method->getDeclaringClass()->getName(); ?>">
+			<?php echo $method->getDeclaringClass()->getName(); ?></a>
+		</dd>
 		<?php endif; ?>
 	</dl>
 </div>
