@@ -55,6 +55,7 @@ class KingPenguin extends Penguin {
  * Just an exaple parent Class
  * @author Michi Gysel
  * @package php.rocks
+ * 
  */
 class Animal {
 	
