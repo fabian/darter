@@ -2,4 +2,13 @@ These Tags are recognised by Darter:
 
 = for Classes =
 
-  * @author Mr. Foobar
+  * `@author Mr. Foobar`
+  * `@package foo.bar`
+  * `@copyright by Mr. 42`
+
+
+= for Methods =
+
+  * `@param string $foobar`
+  * `@return string $foobar`
+
