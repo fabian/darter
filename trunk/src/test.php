@@ -69,6 +69,17 @@ class SaltWater extends Water {
 	}
 }
 
+class SugarWater extends Water {
+	
+	/**
+	 * returns the concentration of sugar
+	 * @return float factor of percentage
+	 */
+	public function getSugarConcentration() {
+		
+	}
+}
+
 class Fire extends Element {
 	
 }
