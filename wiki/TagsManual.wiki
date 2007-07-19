@@ -1,14 +1,25 @@
 These Tags are recognised by Darter:
 
-= for Classes =
+= Overview =
+== Classes ==
+
+  * author
+  * package
+  * copyright
+  * deprecated
+
+== Methods ==
+
+  * author
+  * deprecated
+  * param
+  * return
+
+= Detailed Description =
 
   * `@author Mr. Foobar`
   * `@package foo.bar`
   * `@copyright by Mr. 42`
-
-
-= for Methods =
-
-  * `@param string $foobar`
+  * `@deprecated ` or with comment: `@deprecated since V.4.5`
+  * `@param string $foobar` use this annotation once for every parameter
   * `@return string $foobar`
-
