@@ -9,6 +9,7 @@ These Tags are recognised by Darter:
   * package
   * copyright
   * deprecated
+  * version
 
 == Methods ==
 
@@ -16,6 +17,7 @@ These Tags are recognised by Darter:
   * deprecated
   * param
   * return
+  * version
 
 = Detailed Description =
 
@@ -25,6 +27,7 @@ These Tags are recognised by Darter:
   * `@deprecated ` or with comment: `@deprecated since V.4.5`
   * `@param string $foobar` use this annotation once for every parameter
   * `@return string $foobar`
+  * `@version version x.y`
   
 = Yet to be implemented =
 
@@ -34,6 +37,5 @@ These Tags are recognised by Darter:
   * `@link http://example.org link text, http://additionalexample.org` provide additional informations in form of a link
   * `@see file.php|elementname|class::methodname()|class::$variablename`
   * `@since version x.y`
-  * `@version version x.y`
   * `@throws Exception description`
   
