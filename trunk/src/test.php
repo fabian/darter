@@ -20,6 +20,7 @@ class Penguin extends Animal {
 	 * This cool method returns foo bar. Or
 	 * at least something similar.
 	 *
+	 * @deprecated use sayHello() instead
 	 * @param string $world
 	 * @param string $name
 	 * @return string $helloWorld
@@ -28,16 +29,32 @@ class Penguin extends Animal {
 		return 'Hello ' . $world . ' to ' . $name . '!';
 	}
 	
+	/**
+	 * says hello!
+	 *
+	 */
+	public function sayHello() {
+		
+	}
+	
+	/**
+	 * huhuu, you should not know about this!
+	 */
 	private final function doSecret() {
 		
 	}
 }
+/**
+ * this is a huge penguin!
+ * @package php.rocks
+ */
 class KingPenguin extends Penguin {
 	
 }
 /**
  * Just an exaple parent Class
  * @author Michi Gysel
+ * @package php.rocks
  */
 class Animal {
 	
@@ -47,6 +64,10 @@ class Animal {
 	
 }
 
+/**
+ * @package elements
+ *
+ */
 class Water extends Element implements Drinkable, Liquid {
 	
 	/**
@@ -58,6 +79,10 @@ class Water extends Element implements Drinkable, Liquid {
 	}
 }
 
+/**
+ * @package elements
+ *
+ */
 class SaltWater extends Water {
 	
 	/**
@@ -69,6 +94,10 @@ class SaltWater extends Water {
 	}
 }
 
+/**
+ * @package elements
+ *
+ */
 class SugarWater extends Water {
 	
 	/**
@@ -80,10 +109,18 @@ class SugarWater extends Water {
 	}
 }
 
+/**
+ * @package elements
+ *
+ */
 class Fire extends Element {
 	
 }
 
+/**
+ * @package elements
+ *
+ */
 abstract class Element {
 	
 	/**
