@@ -98,6 +98,10 @@ dd {
 	background-color: #F5F5F5;
 }
 
+.important {
+	color: #B7300F;
+}
+
 hr {
 	border: 0;
 	height: 1px;
