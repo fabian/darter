@@ -19,14 +19,12 @@ class Darter_ClassTree {
 	public function add(Darter_InspectionClass $inspection) {
 		if(!key_exists($inspection->getName(), $this->classes)) {
 			$this->classes[$inspection->getName()] = new Darter_TreeItem($inspection->getName(), $inspection);
-		}
-		if($inspection->getParentClass() != null) {
-			if(!key_exists($inspection->getParentClass()->getName(), $this->classes)) {
-				$this->add($inspection->getParentClass());
+			if($inspection->getParentClass() != null) {
+				$this->add($inspection->getParentClass()); // make sure parent class is in list
+				$this->classes[$inspection->getParentClass()->getName()]->add($this->classes[$inspection->getName()]);
+			} else {
+				$this->root->add($this->classes[$inspection->getName()]);
 			}
-			$this->classes[$inspection->getParentClass()->getName()]->add($this->classes[$inspection->getName()]);
-		} else {
-			$this->root->add($this->classes[$inspection->getName()]);
 		}
 	}
 }
