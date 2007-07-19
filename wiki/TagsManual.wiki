@@ -38,4 +38,23 @@ These Tags are recognised by Darter:
   * `@see file.php|elementname|class::methodname()|class::$variablename`
   * `@since version x.y`
   * `@throws Exception description`
-  
+
+= Tags =
+
+== @package ==
+
+Packages can be used to group multiple classes and interfaces to show their common bond.
+
+== Usage example ==
+
+{{{
+/**
+ * Some sample class.
+ *
+ * @package foobar
+ */
+class Example {
+
+}
+}}}
+
