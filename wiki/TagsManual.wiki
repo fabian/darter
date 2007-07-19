@@ -1,3 +1,5 @@
+#summary a description of all tags recognised by Darter
+
 These Tags are recognised by Darter:
 
 = Overview =
