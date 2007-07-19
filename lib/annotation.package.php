@@ -98,5 +98,25 @@ class Darter_CopyrightAnnotation implements Darter_Annotation {
 		return $this->copyright;
 	}
 }
+class Darter_DeprecatedAnnotation implements Darter_Annotation {
+	
+	private $deprecated;
+	
+	public static function getName() {
+		return 'deprecated';
+	}
+	
+	public function __construct($match) {
+		$this->deprecated = $match;
+	}
+	
+	public function getTitle() {
+		return 'Deprecated';
+	}
+	
+	public function getBody() {
+		return $this->deprecated;
+	}
+}
 
 ?>
