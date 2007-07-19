@@ -23,3 +23,15 @@ These Tags are recognised by Darter:
   * `@deprecated ` or with comment: `@deprecated since V.4.5`
   * `@param string $foobar` use this annotation once for every parameter
   * `@return string $foobar`
+  
+= Yet to be implemented =
+
+  * `@access private` this class/method won't appear in documentation
+  * `@example http://example.org/code.txt` an example with syntax highlighting
+  * `@internal method details for internal use` additional documentation e.g. for developers
+  * `@link http://example.org link text, http://additionalexample.org` provide additional informations in form of a link
+  * `@see file.php|elementname|class::methodname()|class::$variablename`
+  * `@since version x.y`
+  * `@version version x.y`
+  * `@throws Exception description`
+  
