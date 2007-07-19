@@ -111,7 +111,7 @@ class Darter_DeprecatedAnnotation implements Darter_Annotation {
 	}
 	
 	public function getTitle() {
-		return '<span style="color: red;">' . 'Deprecated' . '</span>';
+		return '<span class="important">' . 'Deprecated' . '</span>';
 	}
 	
 	public function getBody() {
