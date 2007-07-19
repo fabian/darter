@@ -32,7 +32,9 @@ class Penguin extends Animal {
 		
 	}
 }
-
+class KingPenguin extends Penguin {
+	
+}
 /**
  * Just an exaple parent Class
  * @author Michi Gysel
@@ -56,8 +58,29 @@ class Water extends Element implements Drinkable, Liquid {
 	}
 }
 
+class SaltWater extends Water {
+	
+	/**
+	 * returns the concentration of salt
+	 * @return float factor of percentage
+	 */
+	public function getSaltConcentration() {
+		
+	}
+}
+
+class Fire extends Element {
+	
+}
+
 abstract class Element {
 	
+	/**
+	 * an element just exists...
+	 */
+	public function exist() {
+		
+	}
 }
 
 /**
