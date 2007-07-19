@@ -1,0 +1,5 @@
+These Tags are recognised by Darter:
+
+= for Classes =
+
+* @author Mr. Foobar
