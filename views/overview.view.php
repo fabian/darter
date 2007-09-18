@@ -44,6 +44,19 @@
 </ul>
 </div>
 
+<?php if(count($this->functions) > 0): ?>
+<div class="section functions odd">
+<h2 class="label">Functions</h2>
+<ul class="content">
+<?php foreach($this->functions as $function): ?>
+<li>
+	<a href="detail.php?function=<?php echo $function->getName(); ?>"><?php echo $function->getName(); ?></a>
+</li>
+<?php endforeach; ?>
+</ul>
+</div>
+<?php endif; ?>
+
 <hr />
 
 <?php $this->show('menu'); ?>

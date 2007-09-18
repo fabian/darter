@@ -8,6 +8,7 @@ $overview->description = Darter_Properties::get('project.description');
 $overview->packages = Darter::getPackages();
 $overview->interfaces = Darter::getInterfaces();
 $overview->classes = Darter::getClassTree();
+$overview->functions = Darter::getFunctions();
 $overview->display();
 
 ?>

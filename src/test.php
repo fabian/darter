@@ -150,4 +150,14 @@ interface Liquid {
 	
 }
 
+/**
+ * An example function
+ *
+ * @param unknown_type $example
+ * @param unknown_type $other
+ */
+function foobar($example, $other) {
+	
+}
+
 ?>

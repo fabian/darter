@@ -137,6 +137,16 @@ class Darter {
 				}
 			}
 		}
+		
+		// add functions to index
+		foreach(self::getFunctions() as $function) {
+			$letter = strtoupper(substr($function->getName(), 0, 1));
+			if(isset($index[$letter])) {
+				$index[$letter][$function->getName()] = $function;
+			} else {
+				$index[$letter] = array($function->getName() => $function);
+			}
+		}
 
 		// sort index members
 		foreach($index as $letter => $array) {
@@ -173,6 +183,22 @@ class Darter {
 		ksort($interfaces);
 
 		return $interfaces;
+	}
+
+	public static function getFunctions() {
+		$functions = array();
+
+		$functionArray = get_defined_functions();
+		foreach($functionArray['user'] as $function) {
+			$inspection = new Darter_InspectionFunction($function);
+			if($inspection->isNotExcluded()) {
+				$functions[$inspection->getName()] = $inspection;
+			}
+		}
+
+		ksort($functions);
+
+		return $functions;
 	}
 }
 
