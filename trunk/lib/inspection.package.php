@@ -56,6 +56,28 @@ class Darter_Inspection {
 
 		return trim($sentence);
 	}
+	
+	public static function isNotExcluded($name) {
+		$excludes = Darter_Properties::get('darter.exclude');
+		foreach(explode(',', $excludes) as $exclude) {
+			if(substr($exclude, 0, 1) == '*') {
+				$exclude = substr($exclude, 1);
+				if (substr($name, -strlen($exclude)) == $exclude) {
+					return false;
+				}
+			} elseif (substr($exclude, -1) == '*') {
+				$exclude = substr($exclude, 0, -1);
+				if (substr($name, 0, strlen($exclude)) == $exclude) {
+					return false;
+				}
+			} else {
+				if ($name == $exclude) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
 
 class Darter_InspectionProperty extends ReflectionProperty {
@@ -125,25 +147,7 @@ class Darter_InspectionClass extends ReflectionClass {
 	}
 
 	public function isNotExcluded() {
-		$excludes = Darter_Properties::get('darter.exclude');
-		foreach(explode(',', $excludes) as $exclude) {
-			if(substr($exclude, 0, 1) == '*') {
-				$exclude = substr($exclude, 1);
-				if (substr($this->getName(), -strlen($exclude)) == $exclude) {
-					return false;
-				}
-			} elseif (substr($exclude, -1) == '*') {
-				$exclude = substr($exclude, 0, -1);
-				if (substr($this->getName(), 0, strlen($exclude)) == $exclude) {
-					return false;
-				}
-			} else {
-				if ($this->getName() == $exclude) {
-					return false;
-				}
-			}
-		}
-		return true;
+		return Darter_Inspection::isNotExcluded($this->getName());
 	}
 
 	public function getDarterFileName() {
@@ -220,6 +224,45 @@ class Darter_InspectionMethod extends ReflectionMethod {
 			$declaration .= ' abstract';
 		}
 		return $declaration;
+	}
+}
+
+class Darter_InspectionFunction extends ReflectionFunction {
+
+	private $description;
+
+	private $annotations;
+
+	public function __construct($name) {
+		parent::__construct($name);
+
+		$this->description = Darter_Inspection::parseDescription($this->getDocComment());
+
+		$this->annotations = Darter_Inspection::parseAnnotations($this->getDocComment());
+	}
+
+	public function getDescription() {
+		return $this->description;
+	}
+
+	public function getAnnotations() {
+		return $this->annotations;
+	}
+
+	public function getAnnotationsByName($name) {
+		if(isset($this->annotations[$name])) {
+			return $this->annotations[$name];
+		} else {
+			return array();
+		}
+	}
+
+	public function getDarterFileName() {
+		return substr($this->getFileName(), strlen(substr(dirname(__FILE__), 0 ,-4) . '/' . Darter_Properties::get('darter.source') . '/'));
+	}
+	
+	public function isNotExcluded() {
+		return Darter_Inspection::isNotExcluded($this->getName());
 	}
 }
 

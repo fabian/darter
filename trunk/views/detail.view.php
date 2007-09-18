@@ -54,9 +54,6 @@
 			<a href="detail.php?class=<?php echo $interface->getName(); ?>"><?php echo $interface->getName(); ?></a>
 		</li>
 	<?php endforeach; ?>
-	<!--<li>Countable</li>
-	<li>IteratorAggregate</li>
-	<li><a href="">SomeCoolInterface</a></li>-->
 	
 </ul>
 </div>
