@@ -66,7 +66,7 @@ class Animal {
 }
 
 /**
- * @package elements
+ * @package earth.elements
  *
  */
 class Water extends Element implements Drinkable, Liquid {
@@ -81,7 +81,7 @@ class Water extends Element implements Drinkable, Liquid {
 }
 
 /**
- * @package elements
+ * @package earth.elements
  * @version 0.2
  */
 class SaltWater extends Water {
@@ -96,7 +96,7 @@ class SaltWater extends Water {
 }
 
 /**
- * @package elements
+ * @package earth.elements
  *
  */
 class SugarWater extends Water {
@@ -111,7 +111,7 @@ class SugarWater extends Water {
 }
 
 /**
- * @package elements
+ * @package earth.elements
  *
  */
 class Fire extends Element {
@@ -119,7 +119,7 @@ class Fire extends Element {
 }
 
 /**
- * @package elements
+ * @package earth.elements
  *
  */
 abstract class Element {
@@ -153,8 +153,8 @@ interface Liquid {
 /**
  * An example function
  *
- * @param unknown_type $example
- * @param unknown_type $other
+ * @param string $example
+ * @param int $other
  */
 function foobar($example, $other) {
 	

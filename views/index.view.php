@@ -26,8 +26,8 @@
 			<a href="detail.php?class=<?php echo $element->getDeclaringClass()->getName() . '#' . $element->getName(); ?>"><?php echo $element->getName(); ?>()</a> in 
 			<a href="detail.php?class=<?php echo $element->getDeclaringClass()->getName(); ?>"><?php echo $element->getDeclaringClass()->getName(); ?></a>
 		</li>
-		<?php case ($element instanceof Darter_InspectionFunction): ?>
-		<li><a href="detail.php?function=<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?></a></li>
+		<?php break; case ($element instanceof Darter_InspectionFunction): ?>
+		<li><a href="detail.php?function=<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?>()</a></li>
 		<?php break; default: ?>
 		<li><a href="detail.php?class=<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?></a></li>
 	<?php endswitch; ?>
