@@ -17,7 +17,11 @@
 <h2 class="label" id="package_<?php echo $package; ?>"><?php echo $package; ?></h2>
 <ul class="content">
 <?php foreach($elements as $element): ?>
-	<li><a href="detail.php?class=<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?></a></li>
+	<?php if($element instanceof Darter_InspectionFunction): ?>
+	<li><a href="detail.php?function=<?php echo $element->getName(); ?>" title="Function"><?php echo $element->getName(); ?>()</a></li>
+	<?php else: ?>
+	<li><a href="detail.php?class=<?php echo $element->getName(); ?>" title="<?php echo $element->getType(); ?>"><?php echo $element->getName(); ?></a></li>
+	<?php endif; ?>
 <?php endforeach; ?>
 </ul>
 </div>
@@ -27,7 +31,11 @@
 <h2 class="label" id="package">(none)</h2>
 <ul class="content">
 <?php foreach($this->elements as $element): ?>
+	<?php if($element instanceof Darter_InspectionFunction): ?>
+	<li><a href="detail.php?function=<?php echo $element->getName(); ?>" title="Function"><?php echo $element->getName(); ?>()</a></li>
+	<?php else: ?>
 	<li><a href="detail.php?class=<?php echo $element->getName(); ?>" title="<?php echo $element->getType(); ?>"><?php echo $element->getName(); ?></a></li>
+	<?php endif; ?>
 <?php endforeach; ?>
 </ul>
 </div>

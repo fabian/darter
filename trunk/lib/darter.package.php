@@ -40,7 +40,7 @@ class Darter {
 			}
 		}
 
-		ksort($classes);
+		uksort($classes, 'strnatcasecmp');
 
 		return $classes;
 	}
@@ -50,15 +50,23 @@ class Darter {
 
 		foreach(self::getClasses() as $class) {
 			if(count($class->getAnnotationsByName('package')) == 0) {
-				$elements[] = $class;
+				$elements[$class->getName()] = $class;
 			}
 		}
 
 		foreach(self::getInterfaces() as $interface) {
 			if(count($interface->getAnnotationsByName('package')) == 0) {
-				$elements[] = $interface;
+				$elements[$interface->getName()] = $interface;
 			}
 		}
+
+		foreach(self::getFunctions() as $function) {
+			if(count($function->getAnnotationsByName('package')) == 0) {
+				$elements[$function->getName()] = $function;
+			}
+		}
+
+		uksort($elements, 'strnatcasecmp');
 
 		return $elements;
 	}
@@ -86,7 +94,17 @@ class Darter {
 			}
 		}
 
-		ksort($packages);
+		foreach(self::getFunctions() as $function) {
+			foreach($function->getAnnotationsByName('package') as $annotation) {
+				if(!isset($packages[$annotation->getPackage()])) {
+					$packages[$annotation->getPackage()] = array();
+				}
+
+				$packages[$annotation->getPackage()][] = $function;
+			}
+		}
+
+		uksort($packages, 'strnatcasecmp');
 
 		return $packages;
 	}
@@ -137,7 +155,7 @@ class Darter {
 				}
 			}
 		}
-		
+
 		// add functions to index
 		foreach(self::getFunctions() as $function) {
 			$letter = strtoupper(substr($function->getName(), 0, 1));
@@ -150,7 +168,7 @@ class Darter {
 
 		// sort index members
 		foreach($index as $letter => $array) {
-			ksort($array);
+			uksort($array, 'strnatcasecmp');
 			$index[$letter] = $array;
 		}
 
@@ -180,7 +198,7 @@ class Darter {
 			}
 		}
 
-		ksort($interfaces);
+		uksort($interfaces, 'strnatcasecmp');
 
 		return $interfaces;
 	}
@@ -196,7 +214,7 @@ class Darter {
 			}
 		}
 
-		ksort($functions);
+		uksort($functions, 'strnatcasecmp');
 
 		return $functions;
 	}
