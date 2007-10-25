@@ -3,11 +3,24 @@
 class Darter_Inspection {
 
 	public static function load() {
-		$path = Darter_Properties::get('darter.source');
-		$suffixLength = strlen(Darter_Properties::get('darter.suffix'));
+		$source = Darter_Properties::get('darter.source');
+		if(is_file($source)) {
+			include_once $source;
+		} else {
+			self::scan(Darter_Properties::get('darter.source'), Darter_Properties::get('darter.suffix'));
+		}
+	}
+
+	private static function scan($path, $suffix) {
+		$suffixLength = strlen($suffix);
 		foreach (scandir($path) as $file) {
-			if (substr($file, -$suffixLength) == Darter_Properties::get('darter.suffix')) {
-				include_once $path . '/' . $file;
+			$current = $path . '/' . $file;
+			if($file != '.' and $file != '..' and is_dir($current)) {
+				self::scan($current, $suffix);
+			} else {
+				if (substr($file, -$suffixLength) == $suffix) {
+					include_once $current;
+				}
 			}
 		}
 	}
@@ -56,7 +69,21 @@ class Darter_Inspection {
 
 		return trim($sentence);
 	}
-	
+
+	public static function parseType($comment) {
+		$array = explode("\n" , $comment);
+
+		$type = '';
+		foreach($array as $line) {
+			if (preg_match('/\* @var (.*)/', $line, $matches)) {
+				$type = $matches[1];
+				break;
+			}
+		}
+
+		return $type;
+	}
+
 	public static function isNotExcluded($name) {
 		$excludes = Darter_Properties::get('darter.exclude');
 		foreach(explode(',', $excludes) as $exclude) {
@@ -84,6 +111,10 @@ class Darter_InspectionProperty extends ReflectionProperty {
 
 	private $modifier;
 
+	private $description;
+
+	private $type;
+
 	public function getModifier() {
 		return $this->modifier;
 	}
@@ -92,6 +123,18 @@ class Darter_InspectionProperty extends ReflectionProperty {
 		parent::__construct($class, $name);
 
 		$this->modifier = implode(' ', Reflection::getModifierNames($this->getModifiers()));
+
+		$this->description = Darter_Inspection::parseDescription($this->getDocComment());
+
+		$this->type = Darter_Inspection::parseType($this->getDocComment());
+	}
+
+	public function getDescription() {
+		return $this->description;
+	}
+
+	public function getType() {
+		return $this->type;
 	}
 }
 
@@ -103,7 +146,6 @@ class Darter_InspectionClass extends ReflectionClass {
 
 	public function __construct($class) {
 		parent::__construct($class);
-
 
 		$this->darter_className = $class;
 
@@ -214,7 +256,7 @@ class Darter_InspectionMethod extends ReflectionMethod {
 			return 'public';
 		}
 	}
-	
+
 	public function getDeclaration() {
 		$declaration = $this->getVisibility();
 		if($this->isFinal()) {
@@ -260,7 +302,7 @@ class Darter_InspectionFunction extends ReflectionFunction {
 	public function getDarterFileName() {
 		return substr($this->getFileName(), strlen(substr(dirname(__FILE__), 0 ,-4) . '/' . Darter_Properties::get('darter.source') . '/'));
 	}
-	
+
 	public function isNotExcluded() {
 		return Darter_Inspection::isNotExcluded($this->getName());
 	}
