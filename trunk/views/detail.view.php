@@ -72,9 +72,9 @@
 <h2 class="label">Fields</h2>
 <dl class="content">
 <?php foreach($this->class->getProperties() as $property): ?>
-		<dt><code><?php echo $property->getModifier(); ?> $<?php echo $property->getName() ?>
+		<dt><code><?php echo $property->getModifier(); ?> <?php echo $property->getType(); ?> $<?php echo $property->getName() ?>
 		</code></dt>
-		<dd>The default value for the integer.</dd>
+		<dd><?php echo $property->getDescription(); ?></dd>
 <?php endforeach; ?>
 	<!--<dt><code>const DEFAULT = 42</code></dt>
 	<dd>The default value for the integer.</dd>
