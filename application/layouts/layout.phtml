@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+			<title>Concentr� XForms - <?php echo $this->escape($this->pageTitle);?></title>
+	
+			<link type="text/css" rel="stylesheet" media="screen" href="/share/css/screen2.css"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+			<meta name="generator" content="Concentré PHP5 framework 0.1"/>
+			<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
+			<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+			<meta name="DC.language" scheme="RFC3066" content="en-EN"/>
+			<meta name="DC.creator" content="CRAMATTE, Sébastien"/>
+			<meta name="DC.date.created" scheme="DCTERMS.W3CDTF" content="2006-02-28"/>
+			<meta name="DC.rights" content="CRAMATTE, Sébastien"/>
+			<meta name="tgn.id" content="7008128"/>
+			<meta name="tgn.name" content="Murcia"/>
+			<meta name="tgn.nation" content="Spain"/>
+			<meta name="geo.position" content="37.9833,-1.1333"/>
+			<meta name="geo.placename" content="Murcia, España"/>
+			<meta name="geo.country" content="ES"/>
+			<meta name="robots" content="index,follow"/>
+			<meta http-equiv="Content-Style-Type" content="text/css"/>
+			<meta name="MSSmartTagsPreventParsing" content="TRUE"/>
+			<meta name="author" content="Sébastien CRAMATTE"/>
+			<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+			<link rel="icon" type="image/png" href="/favicon.png"/>
+			<link rel="start" href="http://xforms.zensoluciones.com/" title="Home"/>
+			<script src="/share/js/languages.js" type="text/javascript"></script>
+	<?php echo $this->headScript(); ?>
+	<?php echo $this->inlineScript(); ?>
+	</head>
+	<body>
+
+			<div id="page">
+				<div id="header">
+					<h1>
+						<img src="/share/img/concentre_logo.png" alt="concentré logo"/>
+						<span>Concentré xml enterprise grade framework</span>
+					</h1>
+					<div id="topmenu">
+						<a href="index" title="<?php echo $this->translate('go_to_homepage') ?>"><?php echo $this->translate('home') ?></a>
+						<a href="contact" title="<?php echo $this->translate('contact_us') ?>"><?php echo $this->translate('contact') ?></a>
+						<a href="#" title="Choose your language..." id="lang" onclick="openLanguagesMenu()">
+						<?php echo $this->lang; ?>	
+						</a>
+						<span id="languages" class="hide">
+							<a href="?lang=en" title="<?php echo $this->translate('english') ?>">en</a>
+							<a href="?lang=fr" title="<?php echo $this->translate('french') ?>">fr</a>
+							<a href="?lang=es" title="<?php echo $this->translate('spanish') ?>">es</a>
+						</span>
+
+					</div>
+				</div>
+				<div id="menu">
+					<ul>
+						<li>
+							<a href="benefits" title="Benefits"><?php echo $this->translate('benefits'); ?></a>
+						</li>
+						<li>
+							<a href="inaction" title="See concentré in action"<?php echo $this->translate('concentre_in_action'); ?></a>
+						</li>
+						<li>
+							<a href="products" title="Take a look at you our profesional offers"><?php echo $this->translate('products'); ?></a>
+						</li>
+
+                                                <li>
+                                                        <a href="services" title="Services"><?php echo $this->translate('services'); ?></a>
+                                                </li>
+						<li>
+							<a href="support" title="Need help or support ?"><?php echo $this->translate('support');?></a>
+						</li>
+						<li>
+							<a href="partners" title="Partnership..."><?php echo $this->translate('partners'); ?></a>
+						</li>
+				</ul>
+				</div>
+				<div id="main">
+					<div id="left">
+					<?php echo $this->action('menu','doc','project');?>	
+					</div>
+					<div id="right">
+					<?php echo $this->layout()->content;?>
+					</div>
+				</div>
+				<div id="footer">
+					<div id="copy">
+						<div id="copylinks"><a href="about" title="<?php echo $this->translate('about'); ?>"><?php echo $this->translate('about'); ?></a> | <a href="contact" title="<?php echo $this->translate('contact_us'); ?>"><?php echo $this->translate('contact'); ?></a> | <a href="accessibility" title="<?php echo $this->translate('accessibility'); ?>"><?php echo $this->translate('accessibility'); ?></a> | <a href="privacy" title="<?php echo $this->translate('use_and_privacy'); ?>"><?php echo $this->translate('use_and_privacy'); ?></a></div>
+						<div id="copytext">conception and design, <a href="http://www.zensoluciones.com" rel="external" title="Zen Soluciones, global it solutions">Zen Soluciones</a>, 2008</div>
+					</div>
+					<div id="standards"><a href="http://validator.w3.org/check?uri=referer" title="This page uses the W3C XHTML 1.1 strict standard " rel="external">xhtml</a>|<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page uses a compatible css stylesheet" rel="external">css</a>|<a href="http://www.w3.org/WAI/WCAG1AA-Conformance" title="This page respects the directives given for the accessibility of web content" rel="external">wcag-aa</a></div>
+
+				</div>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+<script language="javascript">
+
+function init() {
+
+cd_div = document.getElementById('countdown');
+now = new Date().getTime();
+date_evt = new Date(2007, 2, 18).getTime(); 
+days= date_evt-now;
+days= Math.round((Math.round(days)/1000)/60/60/24);
+cd_div.innerHTML = 'd - ' + days;
+
+}
+
+//window.onload=init;
+
+</script>
+
+<div id="main">
+	<h1 id="countdown" />
+</div>

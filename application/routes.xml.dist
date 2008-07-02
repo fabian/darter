@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<routes>
+         
+               <route>
+                        <name>darter2</name>
+                        <url>project/doc/class/:class</url>
+                        <params>
+                                <module>project</module>
+                                <controller>doc</controller>
+                                <action>detail</action>
+                        </params>
+               </route>
+               <route>
+                        <name>doc</name>
+                        <url>project/doc/:action</url>
+                        <params>
+                                <module>project</module>
+                                <controller>doc</controller>
+                        </params>
+                </route>
+
+
+	</routes>
+</config>

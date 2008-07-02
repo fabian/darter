@@ -1,0 +1,29 @@
+<p class="title"><?php echo $this->project; ?></p>
+
+<h2>Index</h2>
+
+<?php foreach($this->index as $letter => $elements) { ?>
+<div class="section index <?php $this->odd; ?>">
+<h3 class="label" id="letter_<?php echo strtolower($letter); ?>"><?php echo $letter; ?></h3>
+<ul class="content">
+	<?php foreach($elements as $element) {
+			 switch(true) {
+			 	case ($element instanceof ReflectionMethod): ?>
+					<li>
+					<a href="detail/class/<?php echo $element->getDeclaringClass()->getName() . '#' . $element->getName(); ?>"><?php echo $element->getName(); ?>()</a> in 
+					<a href="detail/class/<?php echo $element->getDeclaringClass()->getName(); ?>"><?php echo $element->getDeclaringClass()->getName(); ?></a>
+					</li>
+					<?php break;
+ 						case ($element instanceof Darter_Inspection_Function) : ?>
+					<li><a href="detail/function/<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?>()</a></li>
+					<?php break;				
+					default: ?>
+					<li><a href="detail/class/<?php echo $element->getName(); ?>"><?php echo $element->getName(); ?></a></li>
+
+
+	<?php   }
+		} 
+	?>
+</ul>
+</div>
+<?php } ?>
