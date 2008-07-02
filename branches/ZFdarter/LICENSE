@@ -1,0 +1,10 @@
+REQUIREMENTS
+
+PHP 5.2 + PDO support
+Apache mod_rewrite 
+
+
+INSTALATION
+
+1. rename and setup *.dist file in www and application directories
+2. ...

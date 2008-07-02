@@ -1,0 +1,50 @@
+<p class="title"><?php echo $this->project; ?></p>
+
+<h2><?php echo $this->translate('overview'); ?></h2>
+<div class="section description odd">
+<h3 class="label">Description</h3>
+
+<p class="content"><?php echo $this->description; ?></p>
+
+</div>
+
+<div class="section packages">
+<h3 class="label"><?php echo $this->translate('packages'); ?></h3>
+<ul class="content">
+<?php foreach($this->packages as $package => $elements) { ?>
+<li><a href="package/<?php echo $package; ?>"><?php echo $package; ?></a></li>
+<?php } ?>
+</ul>
+</div>
+
+<div class="section interfaces odd">
+<h3 class="label"><?php echo $this->translate('interfaces'); ?></h3>
+<ul class="content">
+<?php foreach($this->interfaces as $interface) { ?>
+<li>
+	<a href="class/<?php echo $interface->getName(); ?>"><?php echo $interface->getName(); ?></a>
+</li>
+<?php } ?>
+</ul>
+</div>
+
+
+
+<div class="section classes">
+<h3 class="label"><?php echo $this->translate('classes'); ?></h3>
+<ul class="content">
+<?php echo $this->tree($this->classes); ?>
+
+</ul>
+</div>
+
+<?php if(count($this->functions) > 0) { ?>
+<div class="section functions odd">
+<h3 class="label"><?php echo $this->translate('functions'); ?></h3>
+<ul class="content">
+<?php foreach($this->functions as $function) { ?>
+<li><a href="function/<?php echo $function->getName(); ?>"><?php echo $function->getName(); ?></a></li>
+<?php } ?>
+</ul>
+</div>
+<?php } ?>

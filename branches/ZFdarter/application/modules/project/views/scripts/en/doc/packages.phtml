@@ -1,0 +1,37 @@
+<p class="title"><?php echo $this->project; ?></p>
+
+<h2>Packages</h2>
+
+<?php foreach($this->packages as $package => $elements) { ?>
+<div class="section package">
+<h3 class="label" id="package_<?php echo $package; ?>"><?php echo $package; ?></h3>
+<ul class="content">
+
+	<?php foreach($elements as $element) { ?>
+		<?php if ($element instanceof Darter_Inspection_Function) { ?>
+			<li><a href="detail/function/<?php echo $element->getName(); ?>" title="Function"><?php echo $element->getName(); ?>()</a></li>
+		<?php } else { ?>
+			<li><a href="detail/class/<?php echo $element->getName(); ?>" title="<?php echo $element->getType(); ?>"><?php echo $element->getName(); ?></a></li>
+		<?php } ?>
+		
+	<?php } ?>
+</ul>
+</div>
+
+<?php } ?>
+
+<div class="section package">
+<h3 class="label" id="package">(none)</h3>
+<ul class="content">
+<?php foreach($this->elements as $element) { ?>
+
+	<?php if($element instanceof Darter_Inspection_Function) { ?>
+		<li><a href="detail.php?function=<?php echo $element->getName(); ?>" title="Function"><?php echo $element->getName(); ?>()</a></li>
+	<?php } else { ?>
+	
+	<li><a href="detail/class/<?php echo $element->getName(); ?>" title="<?php echo $element->getType(); ?>"><?php echo $element->getName(); ?></a></li>
+	<?php } ?>
+
+<?php }Ê?>
+</ul>
+</div>

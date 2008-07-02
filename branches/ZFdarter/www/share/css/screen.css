@@ -1,0 +1,53 @@
+			  br {
+					clear: both;
+				}
+				
+				a, a:visited, a:link { 
+					text-decoration: none;
+				  color: #e86a0f;
+				}
+				
+				a:hover, a:active{
+					text-decoration: none;
+					color: #e86a0f;
+					border: none;
+				}
+								
+ 			  img { 
+					border: none;
+				}
+				
+				p {
+					margin: 2px;
+				}
+				
+				body {
+					margin: 0px; padding: 0px;
+					font-family: arial; 
+					background: #FFFFFF;
+					font-size: 12px;
+					text-decoration: none;
+					color:  #696969;
+
+					padding: 0px;
+					margin: 0px;
+				
+		 	  }
+
+				#main {
+						background: url(../img/concentre_logo.png) center center no-repeat;
+		 				position: absolute;
+					  width: 400px;        /* selon la largeur voulue */
+    				margin-left: -200px; /* moitie de width */
+    				left: 50%;           /* constant, toujours 50% */
+			      height: 240px;       /* selon la quantite de texte */
+    				margin-top: -120px;   /* moitie de height */
+    				top: 50%;            /* constant, toujours 50% */
+				}
+				
+				h1 {
+					text-align:center;
+					padding-top: 180px;
+					padding-left: 80px;
+					font-size: 30px;
+				}

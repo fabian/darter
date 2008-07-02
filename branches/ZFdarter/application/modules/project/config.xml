@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<projects>
+        	<xforms>
+			<doc>
+               			<source>../library/Concentre/XForms</source>
+                		<suffix>.php</suffix>
+                		<excluded>Darter_*,Project_*,Zend_*,Concentre_Acl,Concentre_Controller_*</excluded>
+               			<name>anomey 2.1</name>
+                		<copyright>Copyright © 208. All rights reserved</copyright>
+                		<description><![CDATA[Concentre XForms is a set of PHP Zend Framework's like libraries to help in XForms generation. It follow Zend_Form syntax and semantic.]]></description>
+        		</doc>
+		</xforms>
+	</projects>
+</config>

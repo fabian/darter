@@ -1,0 +1,78 @@
+<p class="title"><?php echo $this->project; ?></p>
+
+<h2>Function <?php echo $this->function->getName(); ?></h2>
+
+<?php if(count($this->function->getParameters()) > 0) { ?>
+<div class="section description <?php $this->odd(); ?>">
+<h3 class="label">Signature</h3>
+
+<p class="content"><?php echo $this->function->getName(); ?> 
+(<?php
+				$first = true;
+				foreach($this->function->getParameters() as $param) {
+					if($first) {
+						$first = false;
+					}
+					else {
+						echo ", ";
+					}
+					echo "$".$param->name."";
+				}
+				?>)
+</p>
+</div>
+<?php endif; ?>
+
+<?php if(count($this->function->getAnnotations()) > 0) { ?>
+<div class="section class <?php $this->odd(); ?>">
+<h3 class="label">Information</h3>
+
+<dl class="content">
+
+	<?php foreach($this->function->getAnnotations() as $annotations) { ?>
+
+	<?php $i = 0; ?>
+
+	<?php foreach($annotations as $annotation): ?>
+
+		<?php if($i++ == 0): ?>
+
+		<dt><?php echo $annotation->getTitle() ?><?php if(count($annotations) > 1) { ?>s<?php } ?></dt>
+
+		<?php endif; ?>
+
+		<dd><?php echo $annotation->getBody() ?></dd>
+
+	<?php } ?>
+
+	<?php } ?>
+</dl>
+</div>
+<?php } ?>
+
+<?php if($this->function->getDescription() != ''): ?>
+<div class="section description <?php $this->odd(); ?>">
+<h3 class="label">Description</h3>
+
+<p class="content"><?php echo $this->function->getDescription(); ?></p>
+</div>
+<?php endif; ?>
+
+<div class="section file <?php $this->odd(); ?>">
+<h3 class="label">Location</h3>
+
+<p class="content"><?php if($this->function->isUserDefined()): ?>
+
+Line <?php echo $this->function->getStartLine(); ?> of file <?php echo $this->function->getDarterFileName(); ?>
+
+<?php } else { ?>
+
+Internal class
+
+<?php if($this->function->getExtensionName() != '') { ?> 
+(Extension <?php echo $this->function->getExtensionName(); ?>)<?php } ?>
+
+<?php } ?></p>
+</div>
+
+<hr />
